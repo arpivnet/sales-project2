@@ -1,0 +1,27 @@
+<div class="container mt-5">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Sales Volume</th>
+        <th scope="col">Met Quota?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tempSelesPerson of salePersonList">
+        <td>{{ tempSelesPerson.firstName }}</td>
+        <td>{{ tempSelesPerson.lastName }}</td>
+        <td>{{ tempSelesPerson.email }}</td>
+        <td >{{ tempSelesPerson.salesVolume | currency:'USD'}}</td>
+        <td>
+          <div *ngIf="tempSelesPerson.salesVolume >=2000; else myElseBlock" [ngClass]="{'text-success': tempSelesPerson.salesVolume >= 2000}">YES</div>
+          <ng-template #myElseBlock><span class="text-danger">NO</span></ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+ 
