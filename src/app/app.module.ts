@@ -5,12 +5,22 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './componenets/product-list/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductService } from './services_folder/product.service';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  { path: 'category/:id', component: ProductListComponent },
+  { path: 'category', component: ProductListComponent },
+  { path: 'products', component: ProductListComponent },
+  { path: '', redirectTo: '/products', pathMatch: 'full' },
+  { path: '**', redirectTo: '/products', pathMatch: 'full' },
+
+]
 
 @NgModule
   ({
     declarations: [AppComponent, ProductListComponent],
 
-    imports: [BrowserModule, HttpClientModule],
+    imports: [BrowserModule, HttpClientModule, RouterModule.forRoot(routes)],
 
     providers: [ProductService],
 
